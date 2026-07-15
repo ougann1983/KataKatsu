@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="max-width: 500px; margin: 0 auto;">
+    <article style="border-radius: 12px;">
+        <header>
+            <h4 style="margin:0; text-align:center;">🔑 账号登录</h4>
+        </header>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username">账户名</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit" style="width: 100%; margin-top: 15px;">安全登录</button>
+        </form>
+        <footer style="text-align: center;">没有账号？ <a href="{% url 'register' %}">点此快速注册</a></footer>
+    </article>
+</div>
+{% endblock %}
