@@ -45,6 +45,12 @@ def login_view(request):
         
         if user is not None:
             auth_login(request, user)
+            
+            # 👑 核心改动：如果是超级管理员（王様），直接送进 Admin 后台！
+            if user.is_superuser:
+                messages.success(request, "欢迎回来，王様！")
+                return redirect('admin:index')
+                
             messages.success(request, "欢迎回来！")
             return redirect('index')
         else:
